@@ -1,0 +1,139 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<meta charset="utf-8" /> 
+<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+
+<script src="js/aframe-animation-component.js"></script>
+
+
+
+<script src="js/isvr-scene.js"></script>
+<script src="js/isvr-menu-block-nav.js"></script>
+
+<script src="js/ComponentGame.js"></script>
+
+
+
+<body style='margin : 0px; overflow: hidden;'>
+    <!-- we add detectionMode and matrixCodeType to tell AR.js to recognize barcode markers -->
+    <a-scene isvr-scene="" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+
+        <a-assets>  
+             
+
+           <!--Declaracion GLB-->
+
+
+            <a-asset-item id="SagradaFamilia" src="GLTF//SagradaFamilia.glb"></a-asset-item>
+             <a-asset-item id="Coliseo" src="GLTF/coliseo.glb"></a-asset-item>
+             <a-asset-item id="BigBen" src="GLTF/big ben2.glb"></a-asset-item>
+              <a-asset-item id="Effiel" src="GLTF/effiel.glb"></a-asset-item>
+            
+                <a-asset-item id="Berlin" src="GLTF/Berlin.glb"></a-asset-item>
+               
+
+                <a-asset-item id="PlaneInspirit1" src="GLTF/PlaneInspirit.glb"></a-asset-item>
+           
+            <!--Declaracion Audio Click-->
+                <audio id="audio-click" src="ui_click0.ogg" response-type="arraybuffer" crossorigin=""></audio>
+        </a-assets>
+
+        <!--Inicio Marcador 1-->
+        <a-marker markerhandler class="marcador" id="marcador1"   type="pattern" url="pattern/pattern-marker-1.patt">
+          
+          
+          
+            
+            <!--SagradaFamilia-->
+            <a-entity class="monumento " rotation="180 -90 90"
+            gltf-model="#SagradaFamilia" 
+            scale="0.009 0.009 0.009"
+            visible="false "
+            visual-monument>
+            
+            </a-entity>
+            <!--texto 0 --->
+            
+            <a-entity 
+                    position="0 1 0" rotation ="-90 0 0"
+                    geometry="primitive: plane; width: 3; height: auto"
+                    aling= "right"
+                    color="#0094a9"
+                    anchor="center"
+                    side="doble"
+                    material="color: #8a1a26"
+                    tabSize="5"
+                    text="value:      ASSEGURA'T EL TEU ERASMUS AMB INSPIRIT."
+                    visual-Text>
+                </a-entity>
+    
+           
+            <!--avion-->
+            <a-entity class="Plane1" 
+                gltf-model="#PlaneInspirit1" 
+                position="0 0 0" scale="0.009 0.009 0.009" rotation="90 -30 180">
+                       
+                        <a-animation attribute="position" 
+                                    dur="10000" 
+                                    from="4 0 -1"
+                                    to="-4 0 -2" 
+                                    repeat="indefinite ">
+                        </a-animation>
+                    
+                   
+        </a-entity>
+
+                    <a-entity class="monumento visual-monument"  rotation="-90 0 0" 
+                    gltf-model="#Coliseo" 
+                    scale="0.01 0.01 0.01"
+                    visible = "false"
+                    visual-monument>
+                    </a-entity>
+                    
+                    <a-entity class="monumento visual-monument"  rotation="-90 0 0" 
+                    gltf-model="#BigBen" 
+                    scale="0.01 0.01 0.01"
+                    visible = "false"
+                    visual-monument>
+                    </a-entity>
+                    <a-entity class="monumento visual-monument"  rotation="-90 0 0" 
+                    position="0 -0.07 0 "
+                    gltf-model="#Effiel" 
+                    scale="0.009 0.009 0.009"
+                    visible = "false"
+                    visual-monument>
+                    </a-entity>
+                    <a-entity class="monumento visual-monument"  rotation="-90 0 0" 
+                    gltf-model="#Berlin" 
+                    scale="0.5 0.5 0.5"
+                    visible = "false"
+                    visual-monument>
+                    </a-entity>
+                  
+                </a-marker>
+                
+                
+   
+
+        <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+        <a-entity camera>
+            <a-cursor fuse="false" color="#910b26" material="" raycaster="" id="cursor" cursor="" geometry="">
+                <a-animation begin="mouseenter" easing="ease-in-out" attribute="scale" dur="1000" fill="backwards" from="2 2 2"
+                    to="0.02 0.02 0.02"></a-animation>
+            </a-cursor>
+
+
+        </a-entity>
+    </a-scene>
+    
+</body>
+
+</html>

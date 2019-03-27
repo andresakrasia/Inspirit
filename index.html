@@ -1,0 +1,567 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+</head>
+<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+<script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
+
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+
+
+<script src="./js/aframe-animation-component.js"></script>
+<script src="./js/ComponentCambioColor.js"></script>
+
+<script src="js/isvr-scene.js"></script>
+<script src="js/isvr-menu-block-nav.js"></script>
+
+
+
+
+
+<body style='margin : 0px; overflow: hidden;'>
+    <!-- we add detectionMode and matrixCodeType to tell AR.js-->
+    <a-scene isvr-scene="" embedded arjs='sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;'>
+
+
+        <a-assets>  
+           <!--STATEMENT GLTF-->
+                <a-asset-item id="TarjetaInspirit" src="GLTF/TarjetaInspirit.glb"></a-asset-item>
+                <a-asset-item id="PlaneInspirit" src="GLTF/PlaneInspirit.glb"></a-asset-item>
+                <a-asset-item id="AppInspirit" src="GLTF/PhoneAppInspirit.glb"></a-asset-item>
+                <a-asset-item id="BlogInspirit1" src="GLTF/BlogInspirit.glb"></a-asset-item>
+                <a-asset-item id="PlaneInspirit1" src="GLTF/PlaneInspirit.glb"></a-asset-item>
+            <!--STATEMENT GUI-->
+            <img src="img/GUI1.png" id="GUI1">
+            <img src="img/GUI2.png" id="GUI2">
+
+            <img src="img/GUI3.png" id="GUI3">
+            <img src="img/GUI4.png" id="GUI4">
+
+            <img src="img/GUI5.png" id="GUI5">
+            <img src="img/GUI6.png" id="GUI6">
+
+            <img src="img/GUI7.png" id="GUI7">
+            <img src="img/GUI8.png" id="GUI8">
+          
+           <!--STATEMENT IMG Menu-->
+                <img src="img/TITULOS/erasmusBlanco.png" id="imagen1" crossorigin="">
+                <img src="img/TITULOS/appBlanco.png" id="imagen2" crossorigin="">
+                <img src="img/TITULOS/mutuaBlanco.png" id="imagen3" crossorigin="">
+                <img src="img/TITULOS/blogBlanco.png" id="imagen4" crossorigin="">
+
+            <!--IMG BUTTONS-->
+                <img src="img/BOTONES/activo.png" id="juegoActivo" crossorigin="">
+                <img src="img/BOTONES/inactivo.png" id="juegoInactivo" crossorigin="">
+
+                <img src="img/BOTONES/activo1.png" id="blogActivo" crossorigin="">
+                <img src="img/BOTONES/inactivo2.png" id="blogInactivo" crossorigin="">
+
+                <img src="img/BOTONES/activo3.png" id="mutuaActivo" crossorigin="">
+                <img src="img/BOTONES/inactivo3.png" id="mutuaInactivo" crossorigin="">
+
+                <img src="img/BOTONES/activo4.png" id="inspiritActivo" crossorigin="">
+                <img src="img/BOTONES/inactivo4.png" id="inspiritInactivo" crossorigin="">
+
+            <!--THUM BUTTONS-->
+                
+                <img src="img/TITULOS/erasmusBlanco.png" id="erasmusActivo" crossorigin="">
+                <img src="img/TITULOS/erasmusBlanco.png" id="erasmusInactivo" crossorigin="">
+                
+                <img src="img/TITULOS/appBlanco.png" id="appActivo" crossorigin="">
+                <img src="img/TITULOS/appBlanco.png" id="appInactivo" crossorigin="">
+
+                <img src="img/TITULOS/mutuaBlanco.png" id="mutuaActivo1" crossorigin="">
+                <img src="img/TITULOS/mutuaBlanco.png" id="mutuaInactivo1" crossorigin="">
+                
+                <img src="img/TITULOS/blogBlanco.png" id="blogActivo1" crossorigin="">
+                <img src="img/TITULOS/blogBlanco.png" id="blogInactivo1" crossorigin="">
+
+            <!--STATEMENT Audio Click-->
+                <audio id="audio-click" src="ui_click0.ogg" response-type="arraybuffer" crossorigin=""></audio>
+        </a-assets>
+
+        <!-- MARKER 1-->
+        <a-marker markerhandler class="marcador" id="marcador1"   type="pattern" url="pattern/pattern-marker-1.patt">
+           
+            <!--CARD Inspirit-->
+             <a-entity class="tarjetaMutua" 
+                       gltf-model="#TarjetaInspirit" 
+                       scale="0.2 0.2 0.2">  
+
+                             <a-animation attribute="rotation" 
+                                          easing="linear" 
+                                          dur="10000" 
+                                          to="0 0 360" 
+                                          repeat="indefinite ">
+                            </a-animation>
+              </a-entity>
+                    
+            <a-entity id="sound-click" sound="src: #audio-click"></a-entity>
+            
+            <!--Group Menus-->
+
+            <a-entity position="0  0 -0.5" rotation="-90 0 0" 
+
+                animation__from_0_to_1="property: position; dur: 500; from: -10 -1.5 -1; to: -20 -1.5 -1; startEvents:from_0_to_1"
+
+                animation__from_0_to_2="property: position; dur: 500; from: -30 -1.5 -1; to: -40 -1.5 -1; startEvents:from_0_to_2"
+                animation__from_0_to_3="property: position; dur: 500; from: -50 -1.5 -1; to: -60 -1.5 -1; startEvents:from_0_to_3"
+
+                animation__from_1_to_0="property: position; dur: 500; from: 10 -1.5 -1; to: 0 -1.5 -1; startEvents:from_1_to_0"
+                animation__from_1_to_2="property: position; dur: 500; from: -30 -1.5 -1; to: -40 -1.5 -1; startEvents:from_1_to_2"
+                animation__from_1_to_3="property: position; dur: 500; from: -50 -1.5 -1; to: -60 -1.5 -1; startEvents:from_1_to_3"
+
+                animation__from_2_to_0="property: position; dur: 500; from: 10 -1.5 -1; to: 0 -1.5 -1; startEvents:from_2_to_0"
+                animation__from_2_to_1="property: position; dur: 500; from: -10 -1.5 -1; to: -20 -1.5 -1; startEvents:from_2_to_1"
+                animation__from_2_to_3="property: position; dur: 500; from: -50 -1.5 -1; to: -60 -1.5 -1; startEvents:from_2_to_3"
+
+                animation__from_3_to_0="property: position; dur: 500; from: 10 -1.5 -1; to: 0 -1.5 -1; startEvents:from_3_to_0"
+                animation__from_3_to_1="property: position; dur: 500; from: -10 -1.5 -1; to: -20 -1.5 -1; startEvents:from_3_to_1"
+                animation__from_3_to_2="property: position; dur: 500; from: -30 -1.5 -1; to: -40 -1.5 -1; startEvents:from_3_to_2"
+                class="menusCiudad "id="menuCiudad0" visible="false">
+
+
+            <!--MENU-0-->
+                <a-entity class="menu-0" position="0 -1 0" visible="true">
+                   
+                <!--SCREEN FRAME 0//-->
+                <a-entity class="primerFondo" 
+                            position="0 0 -1" 
+                            rotation="0 0 0" 
+                            geometry="primitive: plane; width: 2; height: 2"
+                            material="shader: flat; src: #GUI1; transparent: true; opacity: 0.6" 
+                            animation__enter="property: material.opacity; dur: 1000; to: 0; easing: linear; startEvents:iniciarMenu">
+                        
+                        <a-animation attribute="material.opacity" 
+                                     from="0"
+                                     to="0.6"
+                                     dur="1500"
+                                     begin="iniciarFading"
+                                     fill="backwards"
+                                     easing="ease-in">
+                        </a-animation>  
+                                        <a-animation attribute="rotation" 
+                                                        easing="linear" 
+                                                        dur="20000" 
+                                                        to="0 0 360" 
+                                                        repeat="indefinite ">
+                                            </a-animation> 
+                            
+                </a-entity>
+                <a-entity class="primerFondo" 
+                            position="0 0 0" scale="0.6 0.6 0.6" 
+                            rotation="0 0 0" 
+                            geometry="primitive: plane; width: 2; height: 2"
+                            material="shader: flat; src: #GUI2; transparent: true; opacity: 0.6" 
+                            animation__enter="property: material.opacity; dur: 1000; to: 0; easing: linear; startEvents:iniciarMenu">
+                        
+                        <a-animation attribute="material.opacity" 
+                                     from="0"
+                                     to="0.6"
+                                     dur="2500"
+                                     begin="iniciarFading"
+                                     fill="backwards"
+                                     easing="ease-in">
+                        </a-animation>   
+                                        <a-animation attribute="rotation" 
+                                                     easing="linear" 
+                                                     dur="10000" 
+                                                     to="0 0 -360" 
+                                                     repeat="indefinite ">
+                                        </a-animation>
+                            
+                </a-entity>
+                    
+                 <!-- pantalla 0//                              
+                    <a-entity class="pantalla primeraPantalla" 
+                              position="0 0 0" rotation="0 0 0" scale="0.3 0.3 0.3"
+                              geometry="primitive: plane; width:2; height: 1.3"
+                              material="shader: flat; src: #imagen1" 
+                              animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                              link="href: http://www.inspiritmutua.com/; visualAspectEnabled: false" 
+                              animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">
+                                   
+                                <a-animation attribute="material.opacity" 
+                                             from="0"
+                                             to="1"
+                                             dur="2000"
+                                             begin="iniciarFading"
+                                             fill="backwards"
+                                             easing="ease-in">
+                                </a-animation>  
+
+
+                    </a-entity>--> 
+
+                    <!--Avion-->
+                    <a-entity class="pantalla primeraPantalla" 
+                            gltf-model="#PlaneInspirit" 
+                            scale="0.008 0.008 0.008"position="0 0 0" rotation="0 190 0"
+                            animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                            link="href:./EdificiosInspirit.html; visualAspectEnabled: false" 
+                             animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">  
+                              <a-animation attribute="material.opacity" 
+                                        from="0"
+                                        to="1"
+                                        dur="2000"
+                                        begin="iniciarFading"
+                                        fill="backwards"s
+                                        easing="ease-in">
+                            </a-animation> 
+                                            <a-animation attribute="rotation" 
+                                                        easing="linear" 
+                                                        dur="10000" 
+                                                        to="0 -1 0" 
+                                                        repeat="indefinite ">
+                                             </a-animation>
+                    </a-entity>
+
+
+
+                </a-entity>
+
+         <!--Menu (1) -->
+
+            <a-entity class="menu-1" position="20 -1 0" visible="false">
+                    <!-- marco pantalla 1 //-->
+                    <a-entity position="0 0 -1" rotation="0 0 0" 
+                              geometry="primitive: plane; width: 2; height: 2"
+                              material="shader: flat; src: #GUI3; transparent: true; opacity: 0.6">
+                                <a-animation attribute="rotation" 
+                                             easing="linear" 
+                                             dur="10000" 
+                                             to="0 0 -360" 
+                                             repeat="indefinite ">
+                                            </a-animation>
+                    </a-entity>
+                    <a-entity position="0 0 -0.5" rotation="0 0 0" scale="0.5 0.5 0.5" 
+                              geometry="primitive: plane; width: 2; height: 2"
+                              material="shader: flat; src: #GUI4; transparent: true; opacity: 0.6">
+                              <a-animation attribute="rotation" 
+                                            easing="linear" 
+                                            dur="20000" 
+                                            to="0 0 360" 
+                                            repeat="indefinite ">
+                             </a-animation> 
+                    </a-entity>
+
+                    <!-- pantalla 1 //
+                    <a-entity class="pantalla" position="0 0 0" rotation="0 0 0" scale="0.3 0.3 0.3"
+                              geometry="primitive: plane; width:2; height: 1.3"
+                              material="shader: flat; src: #imagen2" 
+                              animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                              link="href: https://www.mutua-enginyers.com/; visualAspectEnabled: false" 
+                              animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">
+                    </a-entity>-->
+                    <!--Avion-->
+                    <a-entity class="pantalla" position="0 0 1" rotation="52 -87 -77"   scale="0.008 0.008 0.008" 
+                             gltf-model="#AppInspirit" 
+                 
+                                animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                              link="href:https://play.google.com/store/apps/details?id=com.inspiritmutua1.app; visualAspectEnabled: false" 
+                              animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">  
+                              <a-animation attribute="material.opacity" 
+                                        from="0"
+                                        to="1"
+                                        dur="2000"
+                                        begin="iniciarFading"
+                                        fill="backwards"
+                                        easing="ease-in">
+                                                    </a-animation> 
+                                                    
+                    </a-entity>
+            </a-entity>
+        
+            <!--Menu(2) -->
+
+                <a-entity class="menu-2" position="40 -1 0" visible="false">
+                    <!-- marco pantalla 2//-->
+                    <a-entity position="0 0 -1" rotation="0 0 0" 
+                              geometry="primitive: plane; width: 2; height: 2"
+                              material="shader: flat; src: #GUI5; transparent: true; opacity: 0.6">
+                              <a-animation attribute="rotation" 
+                                            easing="linear" 
+                                            dur="10000" 
+                                            to="0 0 360" 
+                                            repeat="indefinite ">
+                             </a-animation> 
+                    </a-entity>
+                    <a-entity position="0 0 0" rotation="0 0 0" scale="0.5 0.5 0.5"
+                              geometry="primitive: plane; width: 2; height: 2"
+                              material="shader: flat; src: #GUI6; transparent: true; opacity: 0.6">
+                              <a-animation attribute="rotation" 
+                                             easing="linear" 
+                                             dur="20000" 
+                                             to="0 0 -360" 
+                                             repeat="indefinite ">
+                             </a-animation>
+                    </a-entity>
+
+                    <!-- pantalla 2//
+                    <a-entity class="pantalla" position="0 0 0" rotation="0 0 0" scale="0.3 0.3 0.3"
+                              geometry="primitive: plane; width:2; height: 1.3"
+                              material="shader: flat; src: #imagen3" 
+                              animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                              link="href: https://www.mutua-enginyers.com/; visualAspectEnabled: false" 
+                              animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">
+                    </a-entity>-->
+                    <a-entity class="pantalla" 
+                    gltf-model="#TarjetaInspirit" 
+                    scale="0.09 0.09 0.09" position="0 0 0.1" rotation="0 0 0"
+                    animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                              link="href: http://www.inspiritmutua.com/; visualAspectEnabled: false" 
+                              animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">  
+                              <a-animation attribute="material.opacity" 
+                                        from="0"
+                                        to="1"
+                                        dur="2000"
+                                        begin="iniciarFading"
+                                        fill="backwards"
+                                        easing="ease-in">
+                                                    </a-animation> 
+                                        <a-animation attribute="rotation" 
+                                                    easing="linear" 
+                                                    dur="10000" 
+                                                    to="360 0 360" 
+                                                    repeat="indefinite ">
+                                       </a-animation> 
+                                                    
+                    </a-entity>
+
+                </a-entity>
+            <!--Menu (3) -->
+                <a-entity class="menu-3" position="60 -1 0" visible="false">
+                        <!-- marco pantalla 3//-->
+                        <a-entity position="0 0 -1" rotation="0 0 0" 
+                                  geometry="primitive: plane; width: 2; height: 2"
+                                  material="shader: flat; src: #GUI7; transparent: true; opacity: 0.6">
+                                  <a-animation attribute="rotation" 
+                                                easing="linear" 
+                                                dur="20000" 
+                                                to="0 0 -360" 
+                                                repeat="indefinite ">
+                                  </a-animation>
+                        </a-entity>
+                        <a-entity position="0 0 0" rotation="0 0 0" scale="0.6 0.6 0.6"
+                                  geometry="primitive: plane; width: 2; height: 2"
+                                  material="shader: flat; src: #GUI8; transparent: true; opacity: 0.6">
+                                    <a-animation attribute="rotation" 
+                                                 easing="linear" 
+                                                 dur="10000" 
+                                                 to="0 0 360" 
+                                                 repeat="indefinite ">
+                                    </a-animation> 
+                        </a-entity>
+    
+                        <!-- pantalla 3 //
+                        <a-entity class="pantalla" position="0 0 0" rotation="0 0 0" scale="0.3 0.3 0.3"
+                                  geometry="primitive: plane; width:2; height: 1.3"
+                                  material="shader: flat; src: #imagen4" animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                                  link="href: https://www.mutua-enginyers.com/; visualAspectEnabled: false" 
+                                  animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">
+                        </a-entity>-->
+                        <a-entity class="pantalla "position="0 0 0" rotation="0 0 0" scale="5 5 5" 
+                                  gltf-model="#BlogInspirit1"
+                                  animation__enter="property: position; dur: 500; to: 0 0 0.1; easing: easeOutElastic; startEvents:isvr_mouseenter"
+                                  link="href:http://blog.inspiritmutua.com/; visualAspectEnabled: false" 
+                                  animation__leave="property: position; dur: 350; from: 0 0 0.1; to: 0 0 0; startEvents:isvr_mouseleave">  
+                        <a-animation attribute="material.opacity" 
+                                        from="0"
+                                        to="1"
+                                        dur="2000"
+                                        begin="iniciarFading"
+                                        fill="backwards"
+                                        easing="ease-in">
+                                                    </a-animation> 
+                                        <a-animation attribute="rotation" 
+                                                    easing="linear" 
+                                                    dur="10000" 
+                                                    to="360 0 360" 
+                                                    repeat="indefinite ">
+                                       </a-animation> 
+                                                    
+                    </a-entity>              
+
+                      
+    
+                    </a-entity>
+
+
+            </a-entity>
+
+            <!--GROUP BUTTONS-->
+            <a-entity  class="grupoBotones" position="0 0 0" rotation="-90 0 0" >
+               
+                <!--Boton 1-->
+                <a-entity class="collidable nav-circle juegoBoton botones-0" 
+                          position="-0.80 0.8 0" rotation="0 0 0" 
+                          geometry="primitive: plane; width:1; height: 1"
+                          material="shader: flat; src: #juegoActivo" 
+                          color="#910b26" 
+                          isvr-menu-block-nav-0="show: menu_block_0;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                            <a-animation attribute="material.opacity" 
+                                         from="0"
+                                         to="0.5"
+                                         dur="1000"
+                                         begin="iniciarFading"
+                                         fill="backwards"
+                                         easing="ease-in">
+                            </a-animation>  
+                                            <a-animation attribute="rotation" 
+                                                        easing="linear" 
+                                                        dur="4000" 
+                                                        to="0 0 360" 
+                                                        repeat="indefinite ">
+                                             </a-animation> 
+                </a-entity>
+                <a-entity class="collidable nav-circle LogoBoton botones-0 " 
+                          position="-0.80 0.8 0.2" rotation="0 0 0" scale="0.3 0.3 0.3"
+                          geometry="primitive: plane; width:1; height: 1"
+                          material="shader: flat; src: #erasmusActivo" 
+                          color="#910b26" 
+                          isvr-menu-block-nav-0="show: menu_block_0;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                </a-entity>
+                <!--Boton 2-->
+                <a-entity class="collidable nav-circle blogBoton  botones-0" 
+                          position="-0.80 -0.8 0" rotation="0 0 0" 
+                          geometry="primitive: plane; width:1; height: 1"
+                          material="shader: flat; src: #blogInactivo" 
+                          color="#0095ac" 
+                          isvr-menu-block-nav-0="show: menu_block_1;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                                <a-animation attribute="material.opacity" 
+                                             from="0"
+                                             to="0.5"
+                                             dur="1000"
+                                             begin="iniciarFading"
+                                             fill="backwards"
+                                             easing="ease-in">
+                                </a-animation>  
+                                            <a-animation attribute="rotation" 
+                                                        easing="linear" 
+                                                        dur="4000" 
+                                                        to="0 0 -360" 
+                                                        repeat="indefinite ">
+                                            </a-animation> 
+                </a-entity>
+                <a-entity class="collidable nav-circle LogoBoton botones-0" 
+                          position="-0.80 -0.8 0.2" rotation="0 0 0" scale="0.3 0.3 0.3"
+                          geometry="primitive: plane; width:1; height: 1"
+                          material="shader: flat; src: #appActivo" 
+                          color="#910b26" 
+                          isvr-menu-block-nav-0="show: menu_block_1;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                </a-entity>
+
+                <!--Boton 3-->
+                <a-entity class="collidable nav-circle mutuaBoton  botones-0" 
+                          position="0.8 -0.8 0" 
+                          rotation="0 0 0" 
+                          geometry="primitive: plane; width:1; height: 1"
+                          material="shader: flat; src: #mutuaInactivo" 
+                          color="#0095ac" 
+                          isvr-menu-block-nav-0="show: menu_block_2;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                            <a-animation attribute="material.opacity" 
+                                         from="0"
+                                         to="0.5"
+                                         dur="1000"
+                                         begin="iniciarFading"
+                                         fill="backwards"
+                                         easing="ease-in">
+                            </a-animation>  
+                                            <a-animation attribute="rotation" 
+                                                         easing="linear" 
+                                                         dur="4000" 
+                                                         to="0 0 360" 
+                                                         repeat="indefinite ">
+                                            </a-animation> 
+                </a-entity>
+                <a-entity class="collidable nav-circle LogoBoton botones-0" 
+                          position="0.8 -0.8 0.2" rotation="0 0 0" scale="0.3 0.3 0.3"
+                          geometry="primitive: plane; width:1; height: 1"
+                          material="shader: flat; src: #mutuaActivo1" 
+                          color="#910b26" 
+                          isvr-menu-block-nav-0="show: menu_block_2;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                </a-entity>
+
+                <!--Boton 4-->
+                <a-entity class="collidable nav-circle inspiritBoton  botones-0" 
+                          position="0.80 0.8 0" rotation="0 0 0"
+                          geometry="primitive: plane; width:1; height: 1" 
+                          material="shader: flat; src: #inspiritInactivo"
+                          color="#0095ac" 
+                          isvr-menu-block-nav-0="show: menu_block_3;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                            <a-animation attribute="material.opacity" 
+                                         from="0"
+                                         to="0.5"
+                                         dur="1000"
+                                         begin="iniciarFading"
+                                         fill="backwards"
+                                         easing="ease-in">
+                            </a-animation>  
+                                        <a-animation attribute="rotation" 
+                                                     easing="linear" 
+                                                     dur="4000" 
+                                                     to="0 0 -360" 
+                                                     repeat="indefinite ">
+                                        </a-animation>                            
+                </a-entity>     
+                <a-entity class="collidable nav-circle LogoBoton botones-0" 
+                          position="0.80 0.8 0.2" rotation="0 0 0" scale="0.3 0.3 0.3"
+                          geometry="primitive: plane; width:1; height: 1"
+                          material="shader: flat; src: #blogActivo1" 
+                          color="#910b26" 
+                          isvr-menu-block-nav-0="show: menu_block_3;  activecolor: #910b26; inactivecolor: #0095ac"  
+                          visible="false">
+                </a-entity>          
+            </a-entity>
+        </a-marker>
+
+
+
+        
+        
+        
+        
+        <!--Inicio Marcador 2-->
+        <a-marker markerhandler class="marcador" id="marcador2"   type="pattern" url="pattern/pattern-marker-6.patt">
+        
+
+<!--CARD Inspirit-->
+<a-entity class="tarjetaMutua" 
+gltf-model="#TarjetaInspirit" 
+scale="0.2 0.2 0.2">  
+
+      <a-animation attribute="rotation" 
+                   easing="linear" 
+                   dur="10000" 
+                   to="0 0 360" 
+                   repeat="indefinite ">
+     </a-animation>
+</a-entity>
+
+
+        </a-marker>
+       
+
+
+        <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+        <a-entity camera>
+            <a-cursor fuse="false" color="#910b26" material="" raycaster="" id="cursor" cursor="" geometry="">
+                <a-animation begin="mouseenter" easing="ease-in-out" attribute="scale" dur="1000" fill="backwards" from="2 2 2"
+                    to="0.02 0.02 0.02"></a-animation>
+            </a-cursor>
+
+
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>

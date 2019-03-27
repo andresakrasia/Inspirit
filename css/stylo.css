@@ -1,0 +1,145 @@
+
+.loading {
+	border:0.1em dashed white;
+	width: 70px;
+	height: 70px;
+	border-radius: 100px;
+	animation: load 5s linear infinite;
+}
+
+@keyframes load {
+	0% {
+		transform: rotateZ(0deg);
+	}
+	100% {
+		transform:  rotateZ(360deg);
+	}
+}
+
+@keyframes swizzle {
+	0% {
+		transform: scale(0.8) rotateZ(-3deg);
+	}
+	25% {
+		transform: scale(1.5) rotateZ(5deg);
+	}
+	50% {
+		transform: scale(0.8) rotateZ(3deg);
+	}
+	75% {
+		transform: scale(1.5) rotateZ(-5deg);
+	}
+	100% {
+		transform: scale(0.8) rotateZ(-3deg);
+	}
+}
+
+	.fullscreen {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+	}
+
+	.titlefont {
+		font-family: 'Bungee', cursive;
+		color: white;
+		font-size: 6vh;
+	}
+
+	
+	.setupQuestion {
+		font-family: 'Bungee', cursive;
+		color: white;
+		font-size: 3vh;
+	}
+
+	.setupInstructions {
+		font-family: 'Barlow Condensed', cursive;
+			color: white;
+			font-size: 3vh;
+	}
+
+	.centerItems {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+	}
+
+	#titlescreen {
+		z-index: 100;
+	}
+
+	#titlescreen img {
+		height: 50vh;
+		width: 50vh;
+		animation: swizzle 3s ease-in-out infinite;
+	}
+
+	#setupscreen {
+		z-index: 1000;
+	}
+
+	#setupscreen img {
+		height: 15vh;
+		width: 15vh;
+		align-self:center;
+		justify-content: flex-start;
+		position: absolute;
+		top:0;
+	}
+	#setupscreen a {
+		color: yellow;
+		font-size: 4vh;
+		animation: swizzle 5s ease-in-out infinite;
+	}
+
+	.rectangle {    
+		background: radial-gradient(circle, #00CFFF 0%, #00FFDF 100%);
+	}
+
+	.show {
+		opacity: 1;
+		transition: opacity 1s;
+	}
+	.hide {
+		opacity: 0;
+		transition: opacity 1s;
+		pointer-events: none;
+	}
+
+	.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+#UI{
+	justify-content: flex-end;
+	z-index: 1000;
+}
+
+.button img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.button {
+	border-radius: 100%;
+	height: 10vh;    
+	width: 10vh;     
+	border: 1px solid #F7DD00;    
+	background-color: rgba(216,216,216,0.5);
+	margin-bottom: 10vh;
+}
+.button:active {
+	border: 1px solid #FF00B4;    
+	background-color: rgba(216,216,216,0.5);
+}
